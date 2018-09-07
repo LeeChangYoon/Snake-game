@@ -4,17 +4,17 @@
 #include<stdlib.h>
 #include<time.h>
  
-#define LEFT 75 // Left
-#define RIGHT 77 // Right
-#define UP 72 // Upward
-#define DOWN 80 // Downward
-#define PAUSE 112 // Pause -> 'P'
-#define ESC 27 // ESC
+#define LEFT 75 
+#define RIGHT 77 
+#define UP 72 
+#define DOWN 80 
+#define PAUSE 112 // Keyboard iinput 'P'
+#define ESC 27 
  
-#define MAP_ADJ_X 3 // Map starting point of x 
-#define MAP_ADJ_Y 2	// Map starting point of y
-#define MAP_X 30 // Horizontal map size
-#define MAP_Y 20 // Vertical map size
+#define MAP_ADJ_X 3 // Starting x point of the map
+#define MAP_ADJ_Y 2	// starting y point of the map
+#define MAP_X 30 
+#define MAP_Y 20 
  
 int x[100], y[100]; // Location of snake head, Max size of snake is 100
 int food_x, food_y; // Locatoin of food
@@ -22,12 +22,12 @@ int length; // Snake length
 int speed; // Speed of the game
 int score; //score is stored
 int best_score=0; // Bestscore
-int last_score=0; // Your score in the recent game
+int last_score=0; // Your score in the last game
 int dir; // Direction
-int key; // Stdin
-int status_on=0; // Status
+int key; // input of the key
+int status_on=0; // Status  for developers
  
-// gotoxy is a function that moves ccursor to selected x, y
+// gotoxy is a function that moves cursor to selected x, y
 void gotoxy(int x,int y, const char* s) 
 { 
     COORD pos={2*x,y};
@@ -37,13 +37,13 @@ void gotoxy(int x,int y, const char* s)
  
 void title(void); // Game title
 void reset(void); // Reset the game
-void draw_map(void);  // Map drawing
+void draw_map(void);  // drawing the frame of the map
 void move(int dir);  // Related to snake movinng
 void pause(void); // Pause the game
 void game_over(void); // Game over 
 void food(void); // Randomly response the food
-void status(void); // Shows you the score at the bottom
-void cursor_delete(void); // Function that delets the cursor, Identifier
+void status(void); // Status for developers
+void cursor_delete(void); // Function that delets the cursor
  
 ////////////////////////////MAIN START//////////////////////////////
 int main()
@@ -52,31 +52,32 @@ int main()
     
     while(1)
 	{
-        if(kbhit()) do{key=getch();} while(key==224); 
+        if(kbhit()) do{key=getch();} while(key==224); // Key input
         Sleep(speed);
         
-        switch(key)
+        switch(key) // Apprehend the key and runs the program
 		{  
             case LEFT:
             case RIGHT:
             case UP:
             case DOWN:
-                if( (dir==LEFT&&key!=RIGHT)||(dir==RIGHT&&key!=LEFT)||(dir==UP&&key!=DOWN)||(dir==DOWN&&key!=UP)) 
+                if( (dir==LEFT&&key!=RIGHT)||(dir==RIGHT&&key!=LEFT)||(dir==UP&&key!=DOWN)||
+					(dir==DOWN&&key!=UP)) // Need for prevent the 180 degrees rotational movement
                     dir=key;
-                key=0; 
+                key=0; // Reset the key to 0
             break;
             
 			case PAUSE: 
                 pause();
             break;
             
-			case 115: 
+			case 115: // input 'S', then status() activated
                 if(status_on==0) status_on=1;
                 else status_on=0;
                 key=0;
                 break;
             
-			case ESC: 
+			case ESC: // Program exits if the input value is ESC
                 exit(0);
         }
         move(dir); 
@@ -90,12 +91,12 @@ void title(void)
 {
     int i,j;
     
-    while (kbhit()) 
+    while (kbhit()) // Takes off the value whicj is in buffer
 		getch(); 
      
     draw_map();    
 	cursor_delete();
-    for(i=MAP_ADJ_Y+1;i<MAP_ADJ_Y+MAP_Y-1;i++)
+    for(i=MAP_ADJ_Y+1;i<MAP_ADJ_Y+MAP_Y-1;i++) // Fills the inside of frame with blanks
 	{ 
         for(j=MAP_ADJ_X+1;j<MAP_ADJ_X+MAP_X-1;j++) 
 			gotoxy(j,i,"  ");
@@ -118,13 +119,13 @@ void title(void)
         if(kbhit())
 		{ 
             key=getch();
-			if (key == ESC)
+			if (key == ESC) // If ESC, program exits
 			{
 				system("cls");
 				gotoxy(MAP_ADJ_X + (MAP_X / 2) - 7, MAP_ADJ_Y + 9, "");
 				exit(0);
 			}
-            else break; 
+            else break; // If not ESC, then continues
         } 
 
         gotoxy(MAP_ADJ_X+(MAP_X/2)-7,MAP_ADJ_Y+9," < PRESS ANY KEY TO START > ");
@@ -133,7 +134,7 @@ void title(void)
         Sleep(400);
         
     }
-    reset();  
+    reset(); // Resets the game
 }
  
 void reset(void)
@@ -144,7 +145,7 @@ void reset(void)
     while (kbhit())
 		getch(); 
     
-    dir=LEFT;   
+    dir=LEFT; // Initialization of the values
     speed=100; 
     length=5; 
     score=0; 
@@ -154,7 +155,7 @@ void reset(void)
         y[i]=MAP_Y/2;
         gotoxy(MAP_ADJ_X+x[i],MAP_ADJ_Y+y[i],"▣");
     }
-    gotoxy(MAP_ADJ_X+x[0],MAP_ADJ_Y+y[0],"▣"); // This part is unnecessary
+    gotoxy(MAP_ADJ_X+x[0],MAP_ADJ_Y+y[0],"▣"); // Actually, this part is for snakes' head. But it is unneccesery in this code
     food(); 
 }
  
@@ -179,7 +180,7 @@ void move(int dir)
 {
     int i;
  
-    if(x[0]==food_x&&y[0]==food_y)
+    if(x[0]==food_x&&y[0]==food_y) // Case when it hits with food
 	{  
         score+=10;  
         food();  
@@ -187,12 +188,12 @@ void move(int dir)
         x[length-1]=x[length-2];  
         y[length-1]=y[length-2];
     }
-    if(x[0]==0||x[0]==MAP_X-1||y[0]==0||y[0]==MAP_Y-1)
+    if(x[0]==0||x[0]==MAP_X-1||y[0]==0||y[0]==MAP_Y-1) // Case when it hits the wall
 	{  
         game_over();
         return;  
     }
-    for(i=1;i<length;i++)
+    for(i=1;i<length;i++) // Case when it hits itself
 	{  
         if(x[0]==x[i]&&y[0]==y[i])
 		{
@@ -201,18 +202,18 @@ void move(int dir)
         }
     }
     
-    gotoxy(MAP_ADJ_X+x[length-1],MAP_ADJ_Y+y[length-1],"  ");  
-    for(i=length-1;i>0;i--)
+    gotoxy(MAP_ADJ_X+x[length-1],MAP_ADJ_Y+y[length-1],"  "); // Delets it's last one
+    for(i=length-1;i>0;i--) // Move the coordinates one by one
 	{  
         x[i]=x[i-1];
         y[i]=y[i-1];
     }
-    gotoxy(MAP_ADJ_X+x[0],MAP_ADJ_Y+y[0],"▣"); // Unnecessery
+    gotoxy(MAP_ADJ_X+x[0],MAP_ADJ_Y+y[0],"▣"); // Part that changes head to body. But in this code, it is unnecessery
     if(dir==LEFT) --x[0];  
     if(dir==RIGHT) ++x[0];
     if(dir==UP) --y[0]; 
     if(dir==DOWN) ++y[0];     
-    gotoxy(MAP_ADJ_X+x[i],MAP_ADJ_Y+y[i],"▣");  
+    gotoxy(MAP_ADJ_X+x[i],MAP_ADJ_Y+y[i],"▣"); // Part that puts new head. But unnecessery in this code
 }
  
 void pause(void)
@@ -274,25 +275,24 @@ void food(void)
     int r=0; 
     gotoxy(MAP_ADJ_X,MAP_ADJ_Y+MAP_Y," YOUR SCORE: "); 
     printf("%3d, LAST SCORE: %3d, BEST SCORE: %3d", score, last_score, best_score);
-	status(); // Shows the status
     
     while(1)
 	{            
         food_crush_on=0;    
-        srand((unsigned)time(NULL) + r); // Don't know why r is multiplied
+        srand((unsigned)time(NULL) + r); // Creates random number table
         food_x=(rand()%(MAP_X-2))+1;    
         food_y=(rand()%(MAP_Y-2))+1;
         
         for(i=0;i<length;i++)
 		{ 
-            if(food_x==x[i]&&food_y==y[i]){
+            if(food_x==x[i]&&food_y==y[i]){ // Check if the food is coordinated with the snake
                 food_crush_on=1; 
                 r++;
 				break;	
             }
         }
         
-        if(food_crush_on==1) continue; 
+        if(food_crush_on==1) continue; // If coordinates, do the while statement again
             
         gotoxy(MAP_ADJ_X+food_x,MAP_ADJ_Y+food_y,"◆"); 
         speed-=3; 
