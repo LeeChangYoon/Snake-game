@@ -1,4 +1,4 @@
-# Snake-game
+# Snake_game
 Snake game for 'Basic Programming2' project.
 
 First, comments would be added, and ppt file wil be uploaded.
