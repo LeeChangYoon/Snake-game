@@ -2,7 +2,7 @@
 Snake game for 'Basic Programming2' project.
 
 Here is the Title. It shows explaination about controlling.
-===
+---
 ![](Snake_Game_Title.png)
 
 Next, this is a play screen.
