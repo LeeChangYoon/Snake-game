@@ -21,7 +21,7 @@ This screen shows when game is over.
 ===
 ![](Snake_Game_Gameover.png)
 
-This program is currently in development, and here are what I gonna do.
+This program is currently in development, and here are the things what I will gonna do.
 ===
 
 First, comments would be added, and ppt file wil be uploaded.
