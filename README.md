@@ -1,6 +1,5 @@
 # Snake_game
 Snake game for 'Basic Programming2' project.
-
 ***
 
 This program is currently on developing.
