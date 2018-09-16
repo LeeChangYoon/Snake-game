@@ -1,7 +1,7 @@
 # Snake_game
 Snake game for 'Basic Programming2' project.
 
-This program is currently on developing, and here are the things what I will gonna do.
+This program is currently on developing.
 ---
 
 First, comments would be added, and ppt file wil be uploaded.
