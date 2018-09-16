@@ -13,6 +13,6 @@ This program is currently on developing.
 
 4. Finally, after all of this, our class will make the maze by using what we've learned from the snake game. 
 
-<<<*2018.09.13 Decided not to make the maze*>>>
+**2018.09.13 Decided not to make the maze**
 
 <LeeChangYoon 2018. 09. 16>
