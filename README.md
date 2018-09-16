@@ -36,6 +36,6 @@ Added Rules
 Rule 1: If snake hits te bomb, then it loses 10 points, and it's length shrinks for 1.
 
 Rule 2: I added stages for each score. Stage 2 is unlocked on 70 and gives 30 additional points.  
-Stage 3 is unlocked on 200 and gives 50 additional points
+                                       Stage 3 is unlocked on 200 and gives 50 additional points
 
 <LeeChangYoon 2018. 09. 16>
