@@ -382,7 +382,7 @@ void status(void)
     printf("%2d,%2d",x[0],y[0]);
     gotoxy(MAP_ADJ_X+MAP_X+1,MAP_ADJ_Y+1,"food= ");
     printf("%2d,%2d",food_x,food_y);
-	gotoxy(MAP_ADJ_X + MAP_X + 1, MAP_ADJ_Y + 1, "bomb= ");
+	gotoxy(MAP_ADJ_X + MAP_X + 1, MAP_ADJ_Y + 1, "bomb= "); // Shows the locations of real bombs
 	for (i = 0; i < num_of_bombs; i++) printf("(%2d,%2d) ", bomb_x[i], bomb_y[i]);
     gotoxy(MAP_ADJ_X+MAP_X+1,MAP_ADJ_Y+2,"leng= ");
     printf("%2d",length);
@@ -431,10 +431,15 @@ void stage2(void)
 {
 	system("cls");
 	gotoxy(MAP_ADJ_X + (MAP_X / 2) - 7, MAP_ADJ_Y + 5, "+-----------------------------+");
+	gotoxy(MAP_ADJ_X + (MAP_X / 2) - 7, MAP_ADJ_Y + 6, "|         STAGE 1  CLEAR      |");
+	gotoxy(MAP_ADJ_X + (MAP_X / 2) - 7, MAP_ADJ_Y + 7, "|          BONUS    +30       |");
+	gotoxy(MAP_ADJ_X + (MAP_X / 2) - 7, MAP_ADJ_Y + 8, "+-----------------------------+");
+	Sleep(3000);
+
+	system("cls");
+	gotoxy(MAP_ADJ_X + (MAP_X / 2) - 7, MAP_ADJ_Y + 5, "+-----------------------------+");
 	gotoxy(MAP_ADJ_X + (MAP_X / 2) - 7, MAP_ADJ_Y + 6, "|          S T A G E 2        |");
-	gotoxy(MAP_ADJ_X + (MAP_X / 2) - 7, MAP_ADJ_Y + 7, "|                             |");
-	gotoxy(MAP_ADJ_X + (MAP_X / 2) - 7, MAP_ADJ_Y + 8, "|         B O N U S +30       |");
-	gotoxy(MAP_ADJ_X + (MAP_X / 2) - 7, MAP_ADJ_Y + 9, "+-----------------------------+");
+	gotoxy(MAP_ADJ_X + (MAP_X / 2) - 7, MAP_ADJ_Y + 7, "+-----------------------------+");
 	while (1)
 	{
 		if (kbhit())
@@ -465,10 +470,15 @@ void stage3(void)
 {
 	system("cls");
 	gotoxy(MAP_ADJ_X + (MAP_X / 2) - 7, MAP_ADJ_Y + 5, "+-----------------------------+");
+	gotoxy(MAP_ADJ_X + (MAP_X / 2) - 7, MAP_ADJ_Y + 6, "|         STAGE 1  CLEAR      |");
+	gotoxy(MAP_ADJ_X + (MAP_X / 2) - 7, MAP_ADJ_Y + 7, "|          BONUS    +50       |");
+	gotoxy(MAP_ADJ_X + (MAP_X / 2) - 7, MAP_ADJ_Y + 8, "+-----------------------------+");
+	Sleep(3000);
+
+	system("cls");
+	gotoxy(MAP_ADJ_X + (MAP_X / 2) - 7, MAP_ADJ_Y + 5, "+-----------------------------+");
 	gotoxy(MAP_ADJ_X + (MAP_X / 2) - 7, MAP_ADJ_Y + 6, "|          S T A G E 3        |");
-	gotoxy(MAP_ADJ_X + (MAP_X / 2) - 7, MAP_ADJ_Y + 7, "|                             |");
-	gotoxy(MAP_ADJ_X + (MAP_X / 2) - 7, MAP_ADJ_Y + 8, "|         B O N U S +50       |");
-	gotoxy(MAP_ADJ_X + (MAP_X / 2) - 7, MAP_ADJ_Y + 9, "+-----------------------------+");
+	gotoxy(MAP_ADJ_X + (MAP_X / 2) - 7, MAP_ADJ_Y + 7, "+-----------------------------+");
 	while (1)
 	{
 		if (kbhit())
