@@ -40,6 +40,7 @@ Rule 2: Stage 2 is unlocked on 70 and gives 30 additional points.
 Rule 3: Stage 3 is unlocked on 200 and gives 50 additional points
 
 <LeeChangYoon 2018. 09. 16>
+***
 
 Commits
 ---
