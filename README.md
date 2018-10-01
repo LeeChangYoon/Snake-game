@@ -2,7 +2,7 @@
 Snake game for 'Basic Programming2' project.
 ***
 
-This program development is finished on 2018.09.16.
+This program development is finished on 2018.10.05.
 ---
 
 First, comments would be added, and ppt file wil be uploaded.
@@ -40,3 +40,14 @@ Rule 2: Stage 2 is unlocked on 70 and gives 30 additional points.
 Rule 3: Stage 3 is unlocked on 200 and gives 50 additional points
 
 <LeeChangYoon 2018. 09. 16>
+
+Commits
+---
+
+1. Bug fixed -> latest bomb now disappears. <LeeChangYoon 2018. 09. 23>
+
+2. As score goes to negative, score doesn't displayed before. But, it is fixed now <LeeChangYoon 2018. 10. 01>
+
+3. Stages UI fixed.
+
+4. Files has been seperated to header and sorce code. <LeeChangYoon 2018. 10. 05>
